@@ -22,7 +22,7 @@ class CreateBookService {
     const bookRepository = getCustomRepository(BookRepository);
     const bookAlreadyExists = await bookRepository.findByName(name);
 
-    if (bookAlreadyExists) {
+    if (bookAlreadyExists && bookAlreadyExists.author === author) {
       throw new Error("This book is already registered");
     }
 
