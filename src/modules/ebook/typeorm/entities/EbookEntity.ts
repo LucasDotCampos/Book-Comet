@@ -22,7 +22,7 @@ class EbookEntity {
   publisher: string;
 
   @Column()
-  yearOfPublication: string;
+  yearOfPublication: Date;
 
   @Column()
   summary: string;

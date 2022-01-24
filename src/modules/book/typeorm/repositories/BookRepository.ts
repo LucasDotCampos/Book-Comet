@@ -15,21 +15,21 @@ class BookRepository extends Repository<BookEntity> {
   }
 
   public async findByAuthor(author: string): Promise<BookEntity[]> {
-    const booksOfAuthors = await this.find({
+    const book = await this.find({
       where: {
         author,
       },
     });
-    return booksOfAuthors;
+    return book;
   }
 
   public async findById(bookId: string): Promise<BookEntity> {
-    const booksOfAuthors = await this.findOne({
+    const book = await this.findOne({
       where: {
         id: bookId,
       },
     });
-    return booksOfAuthors;
+    return book;
   }
 }
 
