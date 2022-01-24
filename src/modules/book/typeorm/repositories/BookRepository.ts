@@ -22,6 +22,15 @@ class BookRepository extends Repository<BookEntity> {
     });
     return booksOfAuthors;
   }
+
+  public async findById(bookId: string): Promise<BookEntity> {
+    const booksOfAuthors = await this.findOne({
+      where: {
+        id: bookId,
+      },
+    });
+    return booksOfAuthors;
+  }
 }
 
 export default BookRepository;
