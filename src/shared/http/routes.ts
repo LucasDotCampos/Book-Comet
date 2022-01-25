@@ -17,6 +17,7 @@ route.delete("/book/delete/:bookId", bookController.delete);
 //Ebook's routes
 route.post("/ebook/register", ebookController.create);
 route.get("/ebook/list", ebookController.list);
+route.get("/ebook/list/:author", ebookController.listByAuthor);
 route.put("/ebook/update/:ebookId", ebookController.update);
 route.delete("/ebook/delete/:ebookId", ebookController.delete);
 
