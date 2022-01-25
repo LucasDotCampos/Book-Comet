@@ -16,5 +16,6 @@ route.delete("/book/delete/:bookId", bookController.delete);
 
 //Ebook's routes
 route.post("/ebook/register", ebookController.create);
+route.get("/ebook/list", ebookController.list);
 
 export default route;
