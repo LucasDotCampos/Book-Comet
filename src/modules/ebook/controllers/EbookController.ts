@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 
 import EbookCreateService from "../services/EbookCreateService";
+import EbookDeleteService from "../services/EbookDeleteService";
 import EbookListService from "../services/EbookListService";
-import UpdateEbookService from "../services/UpdateEbookService";
+import EbookUpdateService from "../services/EbookUpdateService";
 
 export default class EbookController {
     public async create(
@@ -60,9 +61,9 @@ export default class EbookController {
                 format,
             } = request.body;
 
-            const updateEbookService = new UpdateEbookService();
+            const ebookUpdateService = new EbookUpdateService();
 
-            const ebook = await updateEbookService.execute({
+            const ebook = await ebookUpdateService.execute({
                 ebookId,
                 name,
                 author,
@@ -72,6 +73,24 @@ export default class EbookController {
                 format,
             });
             return response.status(200).json(ebook);
+        } catch (err) {
+            return response.status(400).json(err.message);
+        }
+    }
+
+    public async delete(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        try {
+            const { ebookId } = request.params;
+
+            const ebookDeleteService = new EbookDeleteService();
+
+            const ebook = await ebookDeleteService.execute({
+                ebookId,
+            });
+            return response.status(200).json("Ebook is succesfully removed");
         } catch (err) {
             return response.status(400).json(err.message);
         }

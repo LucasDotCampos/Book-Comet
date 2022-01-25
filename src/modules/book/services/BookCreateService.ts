@@ -1,9 +1,9 @@
-import BookEntity from "../typeorm/entities/BookEntity";
-import BookRepository from "../typeorm/repositories/BookRepository";
 import { getCustomRepository } from "typeorm";
 
+import BookEntity from "../typeorm/entities/BookEntity";
+import BookRepository from "../typeorm/repositories/BookRepository";
+
 interface IBook {
-    bookId: string;
     name: string;
     author: string;
     publisher: string;
@@ -11,9 +11,8 @@ interface IBook {
     summary: string;
 }
 
-class UpdateBookService {
+class BookCreateService {
     public async execute({
-        bookId,
         name,
         author,
         publisher,
@@ -21,23 +20,23 @@ class UpdateBookService {
         summary,
     }: IBook): Promise<BookEntity> {
         const bookRepository = getCustomRepository(BookRepository);
-        const book = await bookRepository.findById(bookId);
-
         const bookAlreadyExists = await bookRepository.findByName(name);
 
-        if (bookAlreadyExists) {
-            throw new Error("Book already exists");
+        if (bookAlreadyExists && bookAlreadyExists.author === author) {
+            throw new Error("This book is already registered");
         }
 
-        book.name = name;
-        book.author = author;
-        book.publisher = publisher;
-        book.yearOfPublication = yearOfPublication;
-        book.summary = summary;
+        const book = bookRepository.create({
+            name,
+            author,
+            publisher,
+            yearOfPublication,
+            summary,
+        });
 
         await bookRepository.save(book);
         return book;
     }
 }
 
-export default UpdateBookService;
+export default BookCreateService;

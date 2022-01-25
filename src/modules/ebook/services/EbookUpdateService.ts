@@ -13,7 +13,7 @@ interface IEbook {
     format: string;
 }
 
-class UpdateEbookService {
+class EbookUpdateService {
     public async execute({
         ebookId,
         name,
@@ -45,4 +45,4 @@ class UpdateEbookService {
     }
 }
 
-export default UpdateEbookService;
+export default EbookUpdateService;
