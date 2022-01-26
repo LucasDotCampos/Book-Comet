@@ -1,13 +1,11 @@
 {
-  "type": "postgres",
-  "host": "localhost",
-  "port": 5432,
-  "username": "postgres",
-  "password": "admin",
-  "database": "book-comet-database",
-  "entities": ["./src/modules/**/typeorm/entities/*.ts"],
-  "migrations": ["./src/shared/http/typeorm/migrations/*.ts"],
-  "cli": {
-    "migrationsDir": "./src/shared/http/typeorm/migrations"
-  }
+    "type": "sqlite",
+    "username": "postgres",
+    "password": "admin",
+    "database": "src/shared/http/typeorm/book-comet-database.sqlite",
+    "entities": ["./src/modules/**/typeorm/entities/*.ts"],
+    "migrations": ["./src/shared/http/typeorm/migrations/*.ts"],
+    "cli": {
+        "migrationsDir": "./src/shared/http/typeorm/migrations"
+    }
 }

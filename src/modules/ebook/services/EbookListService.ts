@@ -1,7 +1,6 @@
-import { getCustomRepository, getRepository } from "typeorm";
-
 import EbookEntity from "../typeorm/entities/EbookEntity";
 import EbookRepository from "../typeorm/repositories/EbookRepository";
+import { getCustomRepository, getRepository } from "typeorm";
 
 interface IAuthor {
     author: string;
