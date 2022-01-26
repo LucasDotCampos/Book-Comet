@@ -64,6 +64,24 @@ export default class EbookController {
         }
     }
 
+    public async listByPublisher(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        try {
+            const { publisher } = request.params;
+            const ebookListService = new EbookListService();
+
+            const ebooks = await ebookListService.listByPublisherService({
+                publisher,
+            });
+
+            return response.status(200).json(ebooks);
+        } catch (err) {
+            return response.status(400).json(err.message);
+        }
+    }
+
     public async update(
         request: Request,
         response: Response

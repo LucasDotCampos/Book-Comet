@@ -6,6 +6,9 @@ import EbookRepository from "../typeorm/repositories/EbookRepository";
 interface IAuthor {
     author: string;
 }
+interface IPublisher {
+    publisher: string;
+}
 
 class EbookListService {
     public async execute(): Promise<EbookEntity[]> {
@@ -22,6 +25,16 @@ class EbookListService {
         const listEbookRepository = getCustomRepository(EbookRepository);
 
         const ebooks = await listEbookRepository.findByAuthor(author);
+
+        return ebooks;
+    }
+
+    public async listByPublisherService({
+        publisher,
+    }: IPublisher): Promise<EbookEntity[]> {
+        const listEbookRepository = getCustomRepository(EbookRepository);
+
+        const ebooks = await listEbookRepository.findByPublisher(publisher);
 
         return ebooks;
     }
