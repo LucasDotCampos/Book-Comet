@@ -1,21 +1,31 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Timestamp, UpdateDateColumn } from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    Timestamp,
+    UpdateDateColumn,
+} from "typeorm";
 
-@Entity("bookInventory")
+@Entity("inventory")
 class BookInventoryEntity {
-  @PrimaryGeneratedColumn("uuid")
-  id: string;
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
-  @Column()
-  book: string;
+    @Column()
+    name: string;
 
-  @Column()
-  quantity: string;
+    @Column()
+    quantity: number;
 
-  @CreateDateColumn()
-  created_at: Timestamp;
+    @Column()
+    author: string;
 
-  @UpdateDateColumn()
-  updated_at: Timestamp;
+    @CreateDateColumn()
+    created_at: Timestamp;
+
+    @UpdateDateColumn()
+    updated_at: Timestamp;
 }
 
 export default BookInventoryEntity;

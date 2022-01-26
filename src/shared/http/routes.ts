@@ -1,12 +1,14 @@
 import { Request, Response, Router } from "express";
 
 import BookController from "../../modules/book/controllers/BookController";
+import BookInventorycontroller from "../../modules/bookInventory/controllers/BookInventoryController";
 import EbookController from "../../modules/ebook/controllers/EbookController";
 
 const route = Router();
 
 const bookController = new BookController();
 const ebookController = new EbookController();
+const Inventorycontroller = new BookInventorycontroller();
 
 //Book's routes
 route.post("/book/register", bookController.create);
@@ -23,5 +25,7 @@ route.get("/ebook/list/author/:author", ebookController.listByAuthor);
 route.get("/ebook/list/publisher/:publisher", ebookController.listByPublisher);
 route.put("/ebook/update/:ebookId", ebookController.update);
 route.delete("/ebook/delete/:ebookId", ebookController.delete);
+
+route.post("/inventory/register", Inventorycontroller.create);
 
 export default route;
