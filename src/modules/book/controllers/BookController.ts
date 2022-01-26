@@ -37,6 +37,41 @@ export default class BookController {
         const book = await bookListService.execute();
         return response.json(book);
     }
+    public async listByAuthor(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        try {
+            const { author } = request.params;
+            const bookListService = new BookListService();
+
+            const books = await bookListService.listByAuthor({
+                author,
+            });
+
+            return response.status(200).json(books);
+        } catch (err) {
+            return response.status(400).json(err.message);
+        }
+    }
+
+    public async listByPublisher(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        try {
+            const { publisher } = request.params;
+            const bookListService = new BookListService();
+
+            const books = await bookListService.listByPublisher({
+                publisher,
+            });
+
+            return response.status(200).json(books);
+        } catch (err) {
+            return response.status(400).json(err.message);
+        }
+    }
 
     public async delete(request: Request, response: Response) {
         try {
