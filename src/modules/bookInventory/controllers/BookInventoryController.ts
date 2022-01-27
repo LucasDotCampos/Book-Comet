@@ -39,4 +39,27 @@ export default class BookInventorycontroller {
             return response.status(400).json(err.message);
         }
     }
+
+    public async update(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        try {
+            const { bookId } = request.params;
+
+            const { quantity, author, name } = request.body;
+
+            const bookInventoryService = new BookInventoryService();
+
+            const book = await bookInventoryService.update({
+                bookId,
+                quantity,
+                author,
+                name,
+            });
+            return response.status(200).json(book);
+        } catch (err) {
+            return response.status(400).json(err.message);
+        }
+    }
 }

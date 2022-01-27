@@ -13,6 +13,13 @@ interface IInventoryDelete {
     bookId: string;
 }
 
+interface IInventoryUpdate {
+    name: string;
+    quantity: number;
+    author: string;
+    bookId: string;
+}
+
 class BookInventoryService {
     public async register({
         name,
@@ -50,6 +57,29 @@ class BookInventoryService {
         }
 
         await bookRepository.remove(bookInventory);
+    }
+
+    public async update({
+        name,
+        quantity,
+        author,
+        bookId,
+    }: IInventoryUpdate): Promise<BookInventoryEntity> {
+        const bookRepository = getCustomRepository(InventoryRepository);
+        const book = await bookRepository.findById(bookId);
+
+        book.name = name;
+        book.author = author;
+        console.log(quantity + book.quantity < 0);
+
+        if (quantity + book.quantity < 0) {
+            throw new Error("We don't have this book in inventory anymore");
+        }
+
+        book.quantity = book.quantity + quantity;
+
+        await bookRepository.save(book);
+        return book;
     }
 }
 

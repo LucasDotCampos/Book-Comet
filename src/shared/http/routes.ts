@@ -26,7 +26,9 @@ route.get("/ebook/list/publisher/:publisher", ebookController.listByPublisher);
 route.put("/ebook/update/:ebookId", ebookController.update);
 route.delete("/ebook/delete/:ebookId", ebookController.delete);
 
+//Inventory's routes
 route.post("/inventory/register", inventorycontroller.create);
 route.delete("/inventory/delete/:bookId", inventorycontroller.delete);
+route.put("/inventory/update/:bookId", inventorycontroller.update);
 
 export default route;
