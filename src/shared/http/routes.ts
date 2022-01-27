@@ -8,7 +8,7 @@ const route = Router();
 
 const bookController = new BookController();
 const ebookController = new EbookController();
-const Inventorycontroller = new BookInventorycontroller();
+const inventorycontroller = new BookInventorycontroller();
 
 //Book's routes
 route.post("/book/register", bookController.create);
@@ -26,6 +26,7 @@ route.get("/ebook/list/publisher/:publisher", ebookController.listByPublisher);
 route.put("/ebook/update/:ebookId", ebookController.update);
 route.delete("/ebook/delete/:ebookId", ebookController.delete);
 
-route.post("/inventory/register", Inventorycontroller.create);
+route.post("/inventory/register", inventorycontroller.create);
+route.delete("/inventory/delete/:bookId", inventorycontroller.delete);
 
 export default route;

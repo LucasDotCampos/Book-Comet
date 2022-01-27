@@ -22,6 +22,15 @@ class InventoryRepository extends Repository<BookInventoryEntity> {
         });
         return book;
     }
+
+    public async findById(bookId: string): Promise<BookInventoryEntity> {
+        const book = await this.findOne({
+            where: {
+                id: bookId,
+            },
+        });
+        return book;
+    }
 }
 
 export default InventoryRepository;

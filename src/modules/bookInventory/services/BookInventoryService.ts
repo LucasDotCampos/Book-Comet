@@ -9,6 +9,10 @@ interface IInventory {
     author: string;
 }
 
+interface IInventoryDelete {
+    bookId: string;
+}
+
 class BookInventoryService {
     public async register({
         name,
@@ -31,6 +35,21 @@ class BookInventoryService {
 
         await bookRepository.save(book);
         return book;
+    }
+
+    public async delete({ bookId }: IInventoryDelete): Promise<void> {
+        const bookRepository = getCustomRepository(InventoryRepository);
+        const bookInventory = await bookRepository.findById(bookId);
+
+        if (!bookInventory) {
+            throw new Error("Book not found");
+        } else if (bookInventory.quantity >= 0) {
+            throw new Error(
+                "You can't remove this book because still there is some of it in the inventory"
+            );
+        }
+
+        await bookRepository.remove(bookInventory);
     }
 }
 
