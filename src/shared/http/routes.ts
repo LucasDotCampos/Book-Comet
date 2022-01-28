@@ -30,5 +30,6 @@ route.delete("/ebook/delete/:ebookId", ebookController.delete);
 route.post("/inventory/register", inventorycontroller.create);
 route.delete("/inventory/delete/:bookId", inventorycontroller.delete);
 route.put("/inventory/update/:bookId", inventorycontroller.update);
+route.get("/inventory/list", inventorycontroller.index);
 
 export default route;

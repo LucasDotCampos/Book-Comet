@@ -70,7 +70,6 @@ class BookInventoryService {
 
         book.name = name;
         book.author = author;
-        console.log(quantity + book.quantity < 0);
 
         if (quantity + book.quantity < 0) {
             throw new Error("We don't have this book in inventory anymore");
@@ -80,6 +79,14 @@ class BookInventoryService {
 
         await bookRepository.save(book);
         return book;
+    }
+
+    public async index(): Promise<BookInventoryEntity[]> {
+        const bookInventoryRepository = getRepository(BookInventoryEntity);
+
+        const books = await bookInventoryRepository.find();
+
+        return books;
     }
 }
 

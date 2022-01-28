@@ -62,4 +62,14 @@ export default class BookInventorycontroller {
             return response.status(400).json(err.message);
         }
     }
+
+    public async index(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        const bookInventoryService = new BookInventoryService();
+
+        const inventory = await bookInventoryService.index();
+        return response.json(inventory);
+    }
 }
