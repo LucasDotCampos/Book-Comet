@@ -81,7 +81,7 @@ export default class BookController {
 
             await bookDeleteService.execute({ bookId });
 
-            return response.status(204).json("Book was successfully removed");
+            return response.status(200).json("Book was successfully removed");
         } catch (err) {
             return response.status(400).json(err.message);
         }
