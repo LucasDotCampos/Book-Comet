@@ -50,7 +50,7 @@ class BookInventoryService {
 
         if (!bookInventory) {
             throw new Error("Book not found");
-        } else if (bookInventory.quantity >= 0) {
+        } else if (bookInventory.quantity > 0) {
             throw new Error(
                 "You can't remove this book because still there is some of it in the inventory"
             );

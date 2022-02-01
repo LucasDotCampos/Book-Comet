@@ -375,6 +375,148 @@
                     }
                 }
             }
+        },
+
+        "/inventory/register": {
+            "post": {
+                "summary": "Route to register a book in the inventory",
+                "tags": ["Inventory"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Inventory"
+                            },
+                            "examples": {
+                                "Book": {
+                                    "value": {
+                                        "name": "1984",
+                                        "author": "George Orwell",
+                                        "quantity": 100
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "400": {
+                        "description": "Book is already registered"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Inventory"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory/update/{bookId}": {
+            "put": {
+                "summary": "Route to update informations about a book on the inventory",
+                "tags": ["Inventory"],
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/Inventory"
+                            },
+                            "examples": {
+                                "book": {
+                                    "value": {
+                                        "name": "1984",
+                                        "author": "George Orwell",
+                                        "quantity": 0
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Inventory"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory/delete/{bookId}": {
+            "delete": {
+                "summary": "You'll delete book from the inventory",
+                "tags": ["Inventory"],
+                "parameters": [
+                    {
+                        "name": "bookId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "ERROR",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Inventory"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/inventory/list": {
+            "get": {
+                "summary": "You'll get a list of registered books",
+                "tags": ["Inventory"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Inventory"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {

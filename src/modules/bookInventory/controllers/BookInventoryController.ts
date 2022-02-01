@@ -34,7 +34,9 @@ export default class BookInventorycontroller {
             const book = await bookInventoryService.delete({
                 bookId,
             });
-            return response.status(200).json(book);
+            return response
+                .status(200)
+                .json("Book succesfully removed from the inventory.");
         } catch (err) {
             return response.status(400).json(err.message);
         }
