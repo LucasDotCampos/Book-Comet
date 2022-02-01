@@ -212,6 +212,169 @@
                     }
                 }
             }
+        },
+        "/ebook/register": {
+            "post": {
+                "summary": "Route to register a ebook",
+                "tags": ["Ebook"],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Ebook"
+                            },
+                            "examples": {
+                                "Book": {
+                                    "value": {
+                                        "name": "1984",
+                                        "author": "George Martin",
+                                        "publisher": "Status",
+                                        "yearOfPublication": "01/01/01",
+                                        "summary": "a book about modern art",
+                                        "format": "pdf"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "409": {
+                        "description": "Book is already registered"
+                    },
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Book"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ebook/list": {
+            "get": {
+                "summary": "You'll get a list of all the registered ebooks",
+                "tags": ["Ebook"],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Ebook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ebook/list/author/{author}": {
+            "get": {
+                "summary": "You'll get ebooks by their author",
+                "tags": ["Ebook"],
+                "parameters": [
+                    {
+                        "name": "author",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Ebook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ebook/list/publisher/{publisher}": {
+            "get": {
+                "summary": "You'll get ebooks by their publisher",
+                "tags": ["Ebook"],
+                "parameters": [
+                    {
+                        "name": "publisher",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Ebook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ebook/update/{ebookId}": {
+            "put": {
+                "summary": "Route to update informations about a ebook",
+                "tags": ["Ebook"],
+                "parameters": [
+                    {
+                        "name": "ebookId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "$ref": "#/components/schemas/ebook"
+                            },
+                            "examples": {
+                                "Ebook": {
+                                    "value": {
+                                        "name": "1984",
+                                        "author": "George Orwell",
+                                        "publisher": "Secker and Warburg",
+                                        "yearOfPublication": "06/08/1949",
+                                        "summary": "1984 is a dystopian novella by George Orwell published in 1949, which follows the life of Winston Smith, a low ranking member of 'the Party', who is frustrated by the omnipresent eyes of the party, and its ominous ruler Big Brother. 'Big Brother' controls every aspect of people's lives",
+                                        "format": "epub"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Ebook"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -229,7 +392,7 @@
                         "type": "string"
                     },
                     "yearOfPublication": {
-                        "type": "date"
+                        "type": "string"
                     },
                     "summary": {
                         "type": "string"
@@ -249,7 +412,7 @@
                         "type": "string"
                     },
                     "yearOfPublication": {
-                        "type": "date"
+                        "type": "string"
                     },
                     "summary": {
                         "type": "string"

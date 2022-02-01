@@ -27,12 +27,6 @@ class EbookUpdateService {
 
         const ebook = await ebookRepository.findById(ebookId);
 
-        const bookAlreadyExists = await ebookRepository.findByName(name);
-
-        if (bookAlreadyExists) {
-            throw new Error("This ebook is already registered");
-        }
-
         ebook.name = name;
         ebook.author = author;
         ebook.publisher = publisher;
