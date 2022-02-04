@@ -1,5 +1,5 @@
-import BookEntity from "../typeorm/entities/BookEntity";
-import BookRepository from "../typeorm/repositories/BookRepository";
+import BookEntity from "../infra/typeorm/entities/BookEntity";
+import BookRepository from "../infra/typeorm/repositories/BookRepository";
 import { getCustomRepository, getRepository } from "typeorm";
 
 interface IAuthor {

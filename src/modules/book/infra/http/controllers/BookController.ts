@@ -1,9 +1,8 @@
+import BookCreateService from "../../../services/BookCreateService";
+import BookDeleteService from "../../../services/BookDeleteService";
+import BookListService from "../../../services/BookListService";
+import BookUpdateService from "../../../services/BookUpdateService";
 import { Request, Response } from "express";
-
-import BookCreateService from "../services/BookCreateService";
-import BookDeleteService from "../services/BookDeleteService";
-import BookListService from "../services/BookListService";
-import BookUpdateService from "../services/BookUpdateService";
 
 export default class BookController {
     public async create(

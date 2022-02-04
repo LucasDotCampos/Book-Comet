@@ -1,7 +1,7 @@
 import { getCustomRepository, getRepository } from "typeorm";
 
-import BookInventoryEntity from "../typeorm/entities/BookInventoryEntity";
-import InventoryRepository from "../typeorm/repositories/InventoryRepository";
+import BookInventoryEntity from "../infra/typeorm/entities/BookInventoryEntity";
+import InventoryRepository from "../infra/typeorm/repositories/InventoryRepository";
 
 interface IInventory {
     name: string;

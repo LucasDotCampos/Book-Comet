@@ -1,7 +1,7 @@
 import { getCustomRepository } from "typeorm";
 
-import BookRepository from "../../book/typeorm/repositories/BookRepository";
-import EbookRepository from "../typeorm/repositories/EbookRepository";
+import BookRepository from "../../book/infra/typeorm/repositories/BookRepository";
+import EbookRepository from "../infra/typeorm/repositories/EbookRepository";
 
 interface IEbook {
     ebookId: string;

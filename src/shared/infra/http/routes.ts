@@ -1,8 +1,8 @@
 import { Request, Response, Router } from "express";
 
-import BookController from "../../modules/book/controllers/BookController";
-import BookInventorycontroller from "../../modules/bookInventory/controllers/BookInventoryController";
-import EbookController from "../../modules/ebook/controllers/EbookController";
+import BookController from "../../../modules/book/infra/http/controllers/BookController";
+import BookInventorycontroller from "../../../modules/bookInventory/infra/http/controllers/BookInventoryController";
+import EbookController from "../../../modules/ebook/infra/http/controllers/EbookController";
 
 const route = Router();
 

@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 
-import BookRepository from "../typeorm/repositories/BookRepository";
+import BookRepository from "../infra/typeorm/repositories/BookRepository";
 
 interface IBook {
     bookId: string;

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import BookInventoryService from "../services/BookInventoryService";
+import BookInventoryService from "../../../services/BookInventoryService";
 
 export default class BookInventorycontroller {
     public async create(

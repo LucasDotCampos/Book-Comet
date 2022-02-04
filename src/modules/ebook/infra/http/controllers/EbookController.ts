@@ -1,7 +1,7 @@
-import EbookCreateService from "../services/EbookCreateService";
-import EbookDeleteService from "../services/EbookDeleteService";
-import EbookListService from "../services/EbookListService";
-import EbookUpdateService from "../services/EbookUpdateService";
+import EbookCreateService from "../../../services/EbookCreateService";
+import EbookDeleteService from "../../../services/EbookDeleteService";
+import EbookListService from "../../../services/EbookListService";
+import EbookUpdateService from "../../../services/EbookUpdateService";
 import { Request, Response } from "express";
 
 export default class EbookController {
